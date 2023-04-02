@@ -1,0 +1,23 @@
+.sobrenosotros{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+h3{
+    font-size: 1.9rem;
+}
+h4{
+    font-size: 1.4rem;
+    font-style: italic;
+}
+
+p{
+    font-size: 1rem;
+}
+.primerParrafo{
+    margin-top: 20px;
+}
+.ultimoParrafo{
+    margin-bottom: 40px;
+}

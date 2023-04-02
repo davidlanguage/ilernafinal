@@ -1,0 +1,24 @@
+.barraDeNavegacion{
+    margin:0;
+    padding:5px 5px 5px 0;
+    
+}
+.flexNavegacion{
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+.flexNavegacion li{
+    padding: 20px;
+    text-decoration: none;
+    list-style: none;
+}
+.navLink{
+    text-decoration: none;
+    font-size: 20px;
+    
+}
+.navLinkActivo{
+    background-color: darkcyan;
+    cursor: not-allowed;
+}

@@ -1,0 +1,8 @@
+.fondo {
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    margin-bottom: -30px;
+    color:black;
+    padding-bottom: -30px;
+}
