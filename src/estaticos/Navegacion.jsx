@@ -59,7 +59,7 @@ function Navegacion(props) {
           ""
         )}
         {props.usuarioLogueado != null ? (
-          <button onclick={props.setRefrescaHooks()} className="navLink refrescar"
+          <button onClick={()=>props.setRefrescaHooks()} className="navLink refrescar"
           > Refrescar
           </button>
         ) : (

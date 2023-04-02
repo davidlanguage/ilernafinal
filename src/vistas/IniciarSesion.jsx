@@ -4,17 +4,12 @@ import "../estilos/IniciarOCrearSesionEstilo.css";
 import { useState, useEffect } from "react";
 
 const IniciarSesion = (props) => {
-  console.log(props);
-
-  const [usuario, setUsuario] = useState("")
-  const [contrasenya, setContrasenya] = useState("")
-  const [enviar, setEnviar] = useState("")
-
+  const [usuario, setUsuario] = useState("");
+  const [contrasenya, setContrasenya] = useState("");
   const navigate = useNavigate();
 
-
-  useEffect(()=>{
-
+  const iniciarSesion = (evento) => {
+    evento.preventDefault();
     const misHeaders = new Headers();
     misHeaders.append("Content-Type", "application/json");
 
@@ -35,26 +30,11 @@ const IniciarSesion = (props) => {
       .then((result) => {
         props.iniciarSesion(JSON.parse(result));
         navigate("/mensajesdeusuarios");
-        setEnviar(false)
-      },[])
+      }, [])
       .catch((error) => {
-        console.log("error", error)
-      }
-      );
-
-
-  },[enviar])
-
-  console.log("el valor de enviar "+enviar)
-
-
-  const iniciarSesion = (evento) => {
-
-    evento.preventDefault()
-    setEnviar(true)
-
+        console.log("error", error);
+      });
   };
-
   return (
     <div className="iniciarSesionContainer">
       <form method="post" action="" onSubmit={iniciarSesion}>
@@ -66,7 +46,7 @@ const IniciarSesion = (props) => {
             id="usuario"
             name="usuario"
             value={usuario}
-            onChange={(e)=> setUsuario(e.target.value)}
+            onChange={(e) => setUsuario(e.target.value)}
             required
           ></input>
         </div>
@@ -77,18 +57,15 @@ const IniciarSesion = (props) => {
             id="contrasenya"
             name="contrasenya"
             value={contrasenya}
-            onChange={(e)=> setContrasenya(e.target.value)}
+            onChange={(e) => setContrasenya(e.target.value)}
             required
           ></input>
         </div>
         <div className="unidad">
-          <button type="submit">
-            Entrar
-          </button>
+          <button type="submit">Entrar</button>
         </div>
       </form>
     </div>
   );
 };
-
 export default IniciarSesion;
