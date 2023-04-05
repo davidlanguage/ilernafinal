@@ -1,18 +1,15 @@
-import React from "react"
-import { NavLink } from "react-router-dom"
-import Logo from '../imagenes/psicologialogo2.png'
+import React from "react";
+import { NavLink } from "react-router-dom";
+import Logo from "../imagenes/psicologialogo2.png";
 import { useEffect } from "react";
 import { obtenTodosLosMensajesDeUsuario } from "../api/MetodosApi";
 import "../estilos/NavegacionEstilo.css";
 
-function Navegacion(props) { 
-
+function Navegacion(props) {
   return (
     <div className="barraDeNavegacion">
       <ul className="flexNavegacion">
-        <li>
-        <img src={Logo} height="100px"></img>
-        </li>
+        <img src={Logo} height="100px" alt="Logo de la compañía"></img>
         <li>
           <NavLink
             className="navLink"
@@ -26,19 +23,17 @@ function Navegacion(props) {
               : "Cerrar Sesión"}
           </NavLink>
         </li>
-        
-          {
-            props.usuarioLogueado==null
-            ? <li><NavLink
-            className="navLink"
-            to="/sobrenosotros"
-          >Sobre Nosotros
-          </NavLink></li>
-          :
+
+        {props.usuarioLogueado == null ? (
+          <li>
+            <NavLink className="navLink" to="/sobrenosotros">
+              Sobre Nosotros
+            </NavLink>
+          </li>
+        ) : (
           ""
-          }
-          
-        
+        )}
+
         {props.usuarioLogueado == null ? (
           <li>
             <NavLink className="navLink" to="/crearusuario">
@@ -59,9 +54,15 @@ function Navegacion(props) {
           ""
         )}
         {props.usuarioLogueado != null ? (
-          <button onClick={()=>props.setRefrescaHooks()} className="navLink refrescar"
-          > Refrescar
-          </button>
+          <li>
+            <button
+              onClick={() => props.setRefrescaHooks()}
+              className="navLink refrescar"
+            >
+              {" "}
+              Refrescar
+            </button>
+          </li>
         ) : (
           ""
         )}

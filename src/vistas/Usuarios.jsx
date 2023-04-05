@@ -68,7 +68,7 @@ const Usuarios = (props) => {
                   onChange={(e) => setTitulo(e.target.value)}
                   required
                 ></input>
-                <label for="contenido">Contenido :</label>
+                <label for="contenido">Contenido:</label>
                 <input
                   type="text"
                   placeholder="Contenido del mensaje"

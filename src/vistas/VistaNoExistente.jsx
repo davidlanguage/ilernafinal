@@ -6,8 +6,8 @@ function VistaNoExistente() {
   return (
     <div className="inexistente">
       <Link className="botonatras" to='/'>Atrás 🔙</Link>
-      <p>La ruta indicada no existe 🤖.</p>
-      <p> Por favor, apriete el botón 'Atrás' para volver 💻.</p>
+      <p className="inexistente">La ruta indicada no existe 🤖.</p>
+      <p className="inexistente"> Por favor, apriete el botón 'Atrás' para volver 💻.</p>
     </div>
   );
 }
