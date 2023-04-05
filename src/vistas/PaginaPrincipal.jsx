@@ -9,7 +9,7 @@ export const PaginaPrincipal = () => {
       <div>
         <h2>Guía de usuario</h2>
         <h3 className="agradecimiento">
-          Muchas gracias por visitar nuestra página web. Estamos encontados de
+          Muchas gracias por visitar nuestra página web. Estamos encantados de
           la confianza que ha depositado en nosotros.
         </h3>
         <p className="ultimoParrafo">
@@ -20,29 +20,28 @@ export const PaginaPrincipal = () => {
           <li>
             <h4>Creamos un usuario...</h4>
             <p>
-              Si no tiene una cuenta, por favor primero de todo lo que debe
-              hacer es hacer click en "Crear Usuario" donde le pediremos que se
-              cree la cuenta e introduzca cierta información. Toda información
-              relacionada con su <b>edad</b>, <b>género</b> o <b>nombre real</b>{" "}
-              está a en su derecho el compartirla o no. Como usted se sienta más
+              Si no tiene una cuenta, en primer lugar debe hacer click en 
+              "Crear Usuario", donde le pediremos que cree la cuenta. 
+              Como valoramos su privacidad, toda información que nos facilite
+              relacionada con su <b>edad</b>, <b>género</b> o <b>nombre real</b> está en su derecho el compartirla o no. Como usted se sienta más
               cómodo. Por supuesto, todo ello sin coste alguno.
             </p>
           </li>
           <li>
             <h4>Iniciamos sesión...</h4>
             <p>
-              Una vez usted se haya registrado,
-              se le pide que haga click en "Entrar
-              Sesión" y allá ingrese el nombre de usuario y la contraseña.
+              Una vez que usted se haya registrado,
+              se le pedirá que haga click en "Entrar
+              Sesión", donde ingresará el nombre de usuario y la contraseña.
             </p>
           </li>
           <li>
             <h4>Creamos un mensaje...</h4>
             <p>
-              Una vez haya entrado correctamente su sesión, se le instará a que
-              escriba un mensaje. Este mensaje debe llevar un título indicativo,
-              una descripción y se aconseja escribir una dirección de correo
-              electrónico en caso de que desee ser contactado en otra diferente
+              Una vez iniciada su sesión, se le instará a que
+              escriba un mensaje. Este mensaje debe llevar un título indicativo 
+              de lo que le sucede, una descripción y se aconseja escribir una dirección de correo
+              electrónico, en caso de que desee ser contactado en otra diferente
               a la utilizada a la hora de crear la cuenta.
             </p>
           </li>
@@ -51,7 +50,7 @@ export const PaginaPrincipal = () => {
             <p className="ultimoParrafo">
               Este punto nos gustaría que fuera una aclaración. Ningún otro
               usuario será capaz de ver la información y el mensaje escrito en
-              nuestra plataforma. Las únicas personas que leeran sus mensajes
+              nuestra plataforma. Las únicas personas que leerán sus mensajes
               son nuestro personal psicológico por motivos profesionales. Una
               vez sea contactado, usted podrá decidir si está o no de acuerdo
               con el tratamiento ofertado. Si está de acuerdo, se le pide que

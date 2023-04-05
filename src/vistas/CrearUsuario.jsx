@@ -61,7 +61,7 @@ const CrearUsuario = (props) => {
       <form className="formcrear" method="post" action="" onSubmit={crearCuentaYUsuario}>
         <h2>Información de la cuenta</h2>
         <div className="unidad">
-          <label htmlFor="usuario">Entre el nombre de usuario</label>
+          <label htmlFor="usuario">Usuario</label>
           <input
             type="text"
             placeholder="Nombre de usuario"
@@ -73,7 +73,7 @@ const CrearUsuario = (props) => {
           ></input>
         </div>
         <div className="unidad">
-          <label htmlFor="contrasenya">Entre la contraseña</label>
+          <label htmlFor="contrasenya">Contraseña</label>
           <input 
           type="password" 
           name="contrasenya" 
@@ -84,7 +84,7 @@ const CrearUsuario = (props) => {
         </div>
         <h2>Información personal</h2>
         <div className="unidad">
-          <label htmlFor="nombre">Entre el nombre de pila</label>
+          <label htmlFor="nombre">Nombre</label>
           <input
             type="text"
             placeholder="Nombre"
@@ -96,7 +96,7 @@ const CrearUsuario = (props) => {
           ></input>
         </div>
         <div className="unidad">
-          <label htmlFor="apellidos">Entre sus apellidos</label>
+          <label htmlFor="apellidos">Apellidos</label>
           <input
             type="text"
             placeholder="Apellidos"
@@ -108,7 +108,7 @@ const CrearUsuario = (props) => {
           ></input>
         </div>
         <div className="unidad">
-          <label htmlFor="correo">Entre su correo electrónico</label>
+          <label htmlFor="correo">Correo electrónico</label>
           <input
             type="text"
             placeholder="correo@ejemlo.com"
