@@ -20,7 +20,7 @@ function App() {
 
   const [usuarios, setUsuarios] = useState();
 
-  const [usuarioSesion, setusuarioSesion] = useState();
+  const [usuarioSesion, setUsuarioSesion] = useState();
 
   //Esta es la solución aconsejada por la documentación oficial de React para "forzar" y refrescar un useEffect
   const [refrescaHooks, setRefrescaHooks] = useReducer(a => a+1, 0);
@@ -45,11 +45,12 @@ function App() {
 
   console.log(usuarios)
   console.log(mensajes)
+  console.log(usuarioSesion)
 
   return (
     
     <div className="contenedor">
-      <Navegacion salirDeLaSesion = {setusuarioSesion} 
+      <Navegacion salirDeLaSesion = {setUsuarioSesion} 
       usuarioLogueado = {usuarioSesion} 
       setRefrescaHooks = {setRefrescaHooks}>
       </Navegacion>
@@ -59,10 +60,13 @@ function App() {
           <Route path="/crearusuario/exito" element={<UsuarioCreadoConExitoMensaje></UsuarioCreadoConExitoMensaje>}></Route>
           <Route path="/crearusuario" element={<CrearUsuario listaDeUsuarios = {usuarios}></CrearUsuario>}></Route>
           <Route path="/iniciarsesion" element={<IniciarSesion 
-          listaDeUsuarios = {usuarios} iniciarSesion = {setusuarioSesion} 
+          listaDeUsuarios = {usuarios} iniciarSesion = {setUsuarioSesion} 
           ></IniciarSesion>}></Route>
           <Route path='/test' element={<TestMensaje usuarioLogueado = {usuarioSesion}></TestMensaje>}></Route>
-          <Route path='/mensajesdeusuarios' element={<Usuarios listaDeUsuarios = {usuarios} mensajes = {mensajes} usuarioLogueado = {usuarioSesion}></Usuarios>}></Route>
+          <Route path='/mensajesdeusuarios' element={<Usuarios 
+          listaDeUsuarios = {usuarios} 
+          mensajes = {mensajes} 
+          usuarioLogueado = {usuarioSesion}></Usuarios>}></Route>
           <Route path='/usuario/:id' element={<Usuario listaDeUsuarios = {usuarios}></Usuario>}></Route>
           <Route path='*' element={<VistaNoExistente></VistaNoExistente>}></Route>
         </Routes>

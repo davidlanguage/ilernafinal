@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import Axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import "../estilos/IniciarOCrearSesionEstilo.css";
-import  crearUsuarioYContrasenya from '../api/MetodosApi.js'
 
 const CrearUsuario = (props) => {
   const [usuario, setUsuario] = useState('')
@@ -79,6 +77,8 @@ const CrearUsuario = (props) => {
           name="contrasenya" 
           id="contrasenya"
           value={contrasenya}
+          pattern="\w{6,}"
+          title="Mínimo 6 caracteres o números"
           onChange={(e)=> setContrasenya(e.target.value)}
            required></input>
         </div>
@@ -91,6 +91,8 @@ const CrearUsuario = (props) => {
             name="nombre"
             id="nombre"
             value={nombre}
+            pattern="\w{3,}"
+            title="Mínimo 3 caracteres o números"
             onChange={(e)=> setNombre(e.target.value)}
             required
           ></input>
@@ -103,6 +105,8 @@ const CrearUsuario = (props) => {
             name="apellidos"
             value={apellidos}
             onChange={(e)=> setApellidos(e.target.value)}
+            pattern="\w{3,}"
+            title="Mínimo 3 caracteres o números"
             id="apellidos"
             required
           ></input>
@@ -114,6 +118,8 @@ const CrearUsuario = (props) => {
             placeholder="correo@ejemlo.com"
             name="correo"
             id="correo"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+            title="Introduzca un correo electrónico válido"
             value={correo}
             onChange={(e)=> setCorreo(e.target.value)}
             required

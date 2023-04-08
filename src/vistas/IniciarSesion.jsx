@@ -8,7 +8,7 @@ const IniciarSesion = (props) => {
   const [contrasenya, setContrasenya] = useState("");
   const navigate = useNavigate();
 
-  const iniciarSesion = (evento) => {
+  const entrarSesion = (evento) => {
     evento.preventDefault();
     const misHeaders = new Headers();
     misHeaders.append("Content-Type", "application/json");
@@ -37,7 +37,7 @@ const IniciarSesion = (props) => {
   };
   return (
     <div className="iniciarSesionContainer">
-      <form method="post" action="" onSubmit={iniciarSesion}>
+      <form method="post" action="" onSubmit={entrarSesion}>
         <div className="unidad">
           <label htmlFor="usuario">Entre el nombre de usuario</label>
           <input
