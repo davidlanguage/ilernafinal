@@ -40,6 +40,7 @@ const Usuarios = (props) => {
       body: raw,
       redirect: "follow",
     };
+    //Validación para que tanto título como contenido no estén vacíos a la hora de ser enviados
     if (titulo !== "" && contenido !== "") {
       fetch("http://localhost:9090/mensaje/crear", requestOptions)
         .then((response) => response.text())
@@ -113,6 +114,7 @@ const Usuarios = (props) => {
                       correoElectronico: mensaje.usuario.correoElectronico, 
                       tipoUsuario: mensaje.usuario.tipoUsuario,
                     });
+                    console.log(raw)
 
                     const opcionesPeticion = {
                       method: "POST",
@@ -122,10 +124,12 @@ const Usuarios = (props) => {
                     };
 
                     fetch("http://localhost:9090/activar", opcionesPeticion)
-                      .then((response) => response.text())
+                      .then((response) => {console.log(response.text())})
                       .then((result) => console.log(result))
                       .catch((error) => console.log("error", error));
-                  }}
+                  }
+                
+                }
                 >
                   Asignar a mí
                 </button>
@@ -141,7 +145,7 @@ const Usuarios = (props) => {
     return (
       <>
         <h3>
-          Bienvenido al un lugar en donde encontrará la ayuda que necesita
+          Bienvenido a un lugar en donde encontrará la ayuda que necesita
         </h3>
         <p>Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}</p>
         <div>
@@ -194,14 +198,5 @@ const Usuarios = (props) => {
     );
   }
 };
-
-/* Posible futura implementación de un botón "editar"
-Hoy en día no contemplado debido a la naturaleza de la aplicación
-{mensaje.usuario.id === props.usuarioLogueado.usuario.id ? (
-                  <button className="botonEditar">Editar</button>
-                ) : (
-                  ""
-                )}
-*/
 
 export default Usuarios;
