@@ -65,6 +65,8 @@ const CrearUsuario = (props) => {
             placeholder="Nombre de usuario"
             name="usuario"
             id="usuario"
+            pattern="\w{6,}"
+            title="Mínimo 6 caracteres o números"
             value={usuario}
             onChange={(e)=> setUsuario(e.target.value)}
             required

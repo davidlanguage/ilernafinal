@@ -1,9 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../estilos/UsuariosEstilo.css";
 
 const Usuarios = (props) => {
   const [titulo, setTitulo] = useState("");
   const [contenido, setContenido] = useState("");
+  const [tieneMensaje, setTieneMensaje] = useState(false);
+
+  const mensajes = props.mensajes;
+
+  useEffect(() => {
+    mensajes.map((mensaje) =>
+          props.usuarioLogueado.usuario.id ===
+          mensaje.usuario.id? setTieneMensaje(true):setTieneMensaje(false))
+	},[tieneMensaje])
 
   console.log(props);
 
@@ -48,6 +57,7 @@ const Usuarios = (props) => {
           console.log(result);
           setTitulo("");
           setContenido("");
+          setTieneMensaje(true);
           alert(
             "Mensaje creado con éxito. Refresque la página para ver el contenido"
           );
@@ -56,32 +66,6 @@ const Usuarios = (props) => {
     } else {
       alert("No deje el contenido vacío");
     }
-  };
-
-  const activar = () => {
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var raw = JSON.stringify({
-      id: 27,
-      nombre: "asd",
-      apellidos: "asd",
-      activo: 1,
-      correoElectronico: "asd",
-      tipoUsuario: 1,
-    });
-
-    var requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    fetch("http://localhost:9090/activar", requestOptions)
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
   };
 
   if (props.usuarioLogueado.usuario.tipoUsuario === 1)
@@ -167,7 +151,13 @@ const Usuarios = (props) => {
           )}
         </div>
 
-        <div className="contenedorMensaje">
+
+        {
+          tieneMensaje
+          ?
+          ""
+          :
+          <div className="contenedorMensaje">
           <h3>Escriba un mensaje</h3>
           <p className="aparte">Por favor, añada un mensaje si lo desea.</p>
           <label for="titulo">Título: </label>
@@ -194,6 +184,9 @@ const Usuarios = (props) => {
             Crear Mensaje
           </button>
         </div>
+          
+        }
+        
       </>
     );
   }

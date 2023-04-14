@@ -1,5 +1,5 @@
 //Aquí mediante el uso de la librería react-router-dom vamos a pasar las rutas
-import {Routes, Route, Navigate} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import Usuario from './vistas/Usuario'
 import TestMensaje from './vistas/TestMensaje'
 import { PaginaPrincipal } from './vistas/PaginaPrincipal';
@@ -70,7 +70,6 @@ function App() {
           <Route path='/usuario/:id' element={<Usuario listaDeUsuarios = {usuarios}></Usuario>}></Route>
           <Route path='*' element={<VistaNoExistente></VistaNoExistente>}></Route>
         </Routes>
-        {comprobarConexion}
       <MiFooter></MiFooter>
     </div>
   );
