@@ -1,8 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import Logo from "../imagenes/psicologialogo2.png";
-import { useEffect } from "react";
-import { obtenTodosLosMensajesDeUsuario } from "../api/MetodosApi";
 import "../estilos/NavegacionEstilo.css";
 
 function Navegacion(props) {
@@ -47,7 +45,7 @@ function Navegacion(props) {
         {props.usuarioLogueado == null ? (
           <li>
             <NavLink className="navLink" to="/iniciarsesion">
-              Entrar Sesión
+              Iniciar Sesión
             </NavLink>
           </li>
         ) : (
@@ -56,6 +54,7 @@ function Navegacion(props) {
         {props.usuarioLogueado != null ? (
           <li>
             <button
+            id="botonRefrescar"
               onClick={() => props.setRefrescaHooks()}
               className="navLink refrescar"
             >

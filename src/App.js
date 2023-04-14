@@ -66,7 +66,9 @@ function App() {
           <Route path='/mensajesdeusuarios' element={<Usuarios 
           listaDeUsuarios = {usuarios} 
           mensajes = {mensajes} 
-          usuarioLogueado = {usuarioSesion}></Usuarios>}></Route>
+          usuarioLogueado = {usuarioSesion}
+          setRefrescaHooks = {setRefrescaHooks}
+          ></Usuarios>}></Route>
           <Route path='/usuario/:id' element={<Usuario listaDeUsuarios = {usuarios}></Usuario>}></Route>
           <Route path='*' element={<VistaNoExistente></VistaNoExistente>}></Route>
         </Routes>

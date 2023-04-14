@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "../estilos/IniciarOCrearSesionEstilo.css";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 const IniciarSesion = (props) => {
   const [usuario, setUsuario] = useState("");
@@ -56,6 +56,7 @@ const IniciarSesion = (props) => {
             type="password"
             id="contrasenya"
             name="contrasenya"
+            placeholder="Introduzca su contraseña"
             value={contrasenya}
             onChange={(e) => setContrasenya(e.target.value)}
             required

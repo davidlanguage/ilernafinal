@@ -9,7 +9,7 @@ function UsuarioCreadoConExitoMensaje() {
         <div className="inexistente">
       <Link className="botonatras" to='/'>Atrás 🔙</Link>
       <p className="inexistente">¡Muchas felicidades! 🥳</p>
-      <p className="inexistente"> ¡Su usuario ya ha sido creado! Siétanse libre de acceder cuando lo desee a nuestra aplicación.</p>
+      <p className="inexistente"> ¡Su usuario ya ha sido creado! Siéntase libre de acceder cuando lo desee a nuestra aplicación.</p>
     </div>
     </div>
   )

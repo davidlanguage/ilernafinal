@@ -32,6 +32,7 @@ const CrearUsuario = (props) => {
         apellidos: apellidos,
         correoElectronico: correo,
         tipoUsuario: tipoUsuario?tipoUsuario:2,
+        activo: 1
       },
     });
 
@@ -79,6 +80,7 @@ const CrearUsuario = (props) => {
           name="contrasenya" 
           id="contrasenya"
           value={contrasenya}
+          placeholder="Contraseña mínimo de 6 caracteres"
           pattern="\w{6,}"
           title="Mínimo 6 caracteres o números"
           onChange={(e)=> setContrasenya(e.target.value)}
@@ -117,7 +119,7 @@ const CrearUsuario = (props) => {
           <label htmlFor="correo">Correo electrónico</label>
           <input
             type="text"
-            placeholder="correo@ejemlo.com"
+            placeholder="correo@ejemplo.com"
             name="correo"
             id="correo"
             pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
@@ -137,7 +139,7 @@ const CrearUsuario = (props) => {
           name="tipousuario"
           id="psicologo"
           value="1"
-          checked={tipoUsuario == 1? true: false}
+          checked={tipoUsuario === 1? true: false}
           onChange={buscaValorRadioButton}
         ></input>
         <label className="check" for="cliente">
@@ -149,7 +151,7 @@ const CrearUsuario = (props) => {
           name="tipousuario"
           id="cliente"
           value="2"
-          checked={tipoUsuario == 2? true: false}
+          checked={tipoUsuario === 2? true: false}
           onChange={buscaValorRadioButton}
         ></input>
         <div className="unidad">
