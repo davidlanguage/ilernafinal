@@ -49,8 +49,8 @@ function App() {
 
   return (
     
-    <div className="contenedor">
-      <Navegacion salirDeLaSesion = {setUsuarioSesion} 
+    <div className="container">
+      <Navegacion salirDeLaSesion = {() => setUsuarioSesion(null)} 
       usuarioLogueado = {usuarioSesion} 
       setRefrescaHooks = {setRefrescaHooks}>
       </Navegacion>

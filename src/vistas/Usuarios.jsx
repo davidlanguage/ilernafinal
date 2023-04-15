@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import "../estilos/UsuariosEstilo.css";
 
 const Usuarios = (props) => {
-
-  const escribirMensajeCliente = document.getElementsByClassName('contenedorMensaje');
+  const escribirMensajeCliente =
+    document.getElementsByClassName("contenedorMensaje");
 
   const [titulo, setTitulo] = useState("");
   const [contenido, setContenido] = useState("");
@@ -11,9 +11,9 @@ const Usuarios = (props) => {
 
   const mensajes = props.mensajes;
 
-  console.log(escribirMensajeCliente)
+  console.log(escribirMensajeCliente);
 
-  //Con esto verificamos que el usuario tenga o no mensajes. 
+  //Con esto verificamos que el usuario tenga o no mensajes.
   //Si tiene mensajes, no podrá escribir un mensaje
   //Si no tiene mensajes, podrá escribir uno
   //al final [] actualiza la llamada para que después de escribir un mensaje
@@ -69,9 +69,9 @@ const Usuarios = (props) => {
           console.log(result);
           setTitulo("");
           setContenido("");
-          setTieneMensaje(true); 
+          setTieneMensaje(true);
           props.setRefrescaHooks();
- /*         alert(
+          /*         alert(
             "Mensaje creado con éxito. Refresque la página para ver el contenido"
           ); */
         })
@@ -84,21 +84,24 @@ const Usuarios = (props) => {
   if (props.usuarioLogueado.usuario.tipoUsuario === 1)
     return (
       <>
-        <h3>¡Hola, psicólogo!</h3>
-        <p>Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}</p>
+        <h3 className="display-5">¡Hola, psicólogo!</h3>
+        <p className="display-6">Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}</p>
         <div>
           {props.mensajes.map((mensaje) =>
             mensaje.usuario.tipoUsuario === 2 &&
             mensaje.usuario.activo === 1 ? (
-              <div className="contenedorMensaje">
-                <h2>{mensaje.titulo}</h2>
-                <p>{mensaje.contenido}</p>
+              <div className="card">
+                
+                <div className="card-body">
+                <h2 className="card-title">{mensaje.titulo}</h2>
+                <p className="card-text">{mensaje.contenido}</p>
                 <p>
                   Publicado por: {mensaje.usuario.nombre}{" "}
                   {mensaje.usuario.apellidos}
                 </p>
-                <p>Correo electrónico: {mensaje.usuario.correoElectronico}</p>
+                <p className="card-text">Correo electrónico: {mensaje.usuario.correoElectronico}</p>
                 <button
+                className="btn btn-primary"
                   onClick={() => {
                     const cabecera = new Headers();
                     cabecera.append("Content-Type", "application/json");
@@ -131,8 +134,10 @@ const Usuarios = (props) => {
                       .catch((error) => console.log("error", error));
                   }}
                 >
-                  Asignar a mí
+                  Asignar
                 </button>
+                  </div>
+                
               </div>
             ) : (
               ""
@@ -144,34 +149,41 @@ const Usuarios = (props) => {
   else {
     return (
       <>
-        <h3>Bienvenido a un lugar en donde encontrará la ayuda que necesita</h3>
-        <p>Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}</p>
-        <div>
+        <h3 className="display-5">Bienvenido a un lugar en donde encontrará la ayuda que necesita</h3>
+        <p className="display-6">Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}</p>
+        <div className="card">
           {props.mensajes.map((mensaje) =>
             mensaje.usuarioDestino.id === props.usuarioLogueado.usuario.id &&
             props.usuarioLogueado.usuario.id ? (
-              <div>
-                <h2>{mensaje.titulo}</h2>
-                <p>{mensaje.contenido}</p>
+              <div className="card-body">
+                <h2 className="card-title">{mensaje.titulo}</h2>
+                <p className="card-text">{mensaje.contenido}</p>
                 <p>
                   Publicado por: {mensaje.usuario.nombre}{" "}
                   {mensaje.usuario.apellidos}
                 </p>
-                <p>Correo electrónico: {mensaje.usuario.correoElectronico}</p>
+                <p className="card-text">Correo electrónico: {mensaje.usuario.correoElectronico}</p>
                 <button
+                className="btn btn-primary"
                   onClick={() => {
                     const cabecera = new Headers();
                     cabecera.append("Content-Type", "application/json");
-                    cabecera.append('Access-Control-Allow-Origin','http://localhost:9090');
+                    cabecera.append(
+                      "Access-Control-Allow-Origin",
+                      "http://localhost:9090"
+                    );
 
                     const opcionesPeticion = {
                       method: "DELETE",
-                      mode: 'cors',
+                      mode: "cors",
                       headers: cabecera,
                       redirect: "follow",
                     };
 
-                    fetch(`http://localhost:9090/mensaje/borrar/${mensaje.usuario.id}`, opcionesPeticion)
+                    fetch(
+                      `http://localhost:9090/mensaje/borrar/${mensaje.id}`,
+                      opcionesPeticion
+                    )
                       .then((response) => {
                         console.log(response.text());
                       })
@@ -194,34 +206,45 @@ const Usuarios = (props) => {
         {tieneMensaje ? (
           ""
         ) : (
-          <div className="contenedorMensaje">
+          <div>
             <h3>Escriba un mensaje</h3>
             <p className="aparte">Por favor, añada un mensaje si lo desea.</p>
-            <label for="titulo">Título: </label>
-            <input
-              type="text"
-              placeholder="Contenido del título"
-              name="titulo"
-              id="titulo"
-              title="No deje este campo vacío"
-              value={titulo}
-              onChange={(e) => setTitulo(e.target.value)}
-              required
-            ></input>
-            <label for="contenido">Contenido:</label>
-            <input
-              type="text"
-              placeholder="Contenido del mensaje"
-              name="contenido"
-              id="contenido"
-              title="No deje este campo vacío"
-              value={contenido}
-              onChange={(e) => setContenido(e.target.value)}
-              required
-            ></input>
-            <button className="botonCrear" onClick={crearMensajeCliente}>
-              Crear Mensaje
-            </button>
+            <div className="form-group">
+              <label for="titulo">Título: </label>
+              <input
+                type="text"
+                placeholder="Contenido del título"
+                name="titulo"
+                id="titulo"
+                title="No deje este campo vacío"
+                value={titulo}
+                onChange={(e) => setTitulo(e.target.value)}
+                required
+                className="form-control"
+              ></input>
+            </div>
+            <div className="form-group">
+              <label for="contenido">Contenido:</label>
+              <textarea
+                placeholder="Contenido del mensaje"
+                name="contenido"
+                id="contenido"
+                title="No deje este campo vacío"
+                value={contenido}
+                rows="6"
+                className="form-control"
+                onChange={(e) => setContenido(e.target.value)}
+                required
+              ></textarea>
+            </div>
+            <div className="mb">
+              <button
+                className="btn btn-primary mb-3 botonCrear"
+                onClick={crearMensajeCliente}
+              >
+                Crear
+              </button>
+            </div>
           </div>
         )}
       </>

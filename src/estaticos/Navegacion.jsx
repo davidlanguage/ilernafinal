@@ -5,16 +5,19 @@ import "../estilos/NavegacionEstilo.css";
 
 function Navegacion(props) {
   return (
-    <div className="barraDeNavegacion">
-      <ul className="flexNavegacion">
-        <img src={Logo} height="100px" alt="Logo de la compañía"></img>
-        <li>
+    <div className="">
+      <ul className="flexNavegacion ">
+        <img
+          src={Logo}
+          height="100px"
+          alt="Logo de la compañía"
+          className="nav-item"
+        ></img>
+        <li className="nav-item">
           <NavLink
-            className="navLink"
+            className="btn btn-primary"
             to="/"
-            onClick={() => {
-              props.salirDeLaSesion(null);
-            }}
+            onClick={props.salirDeLaSesion}
           >
             {props.usuarioLogueado == null
               ? "Página Principal"
@@ -23,8 +26,8 @@ function Navegacion(props) {
         </li>
 
         {props.usuarioLogueado == null ? (
-          <li>
-            <NavLink className="navLink" to="/sobrenosotros">
+          <li className="nav-item">
+            <NavLink className="btn btn-primary" to="/sobrenosotros">
               Sobre Nosotros
             </NavLink>
           </li>
@@ -34,7 +37,7 @@ function Navegacion(props) {
 
         {props.usuarioLogueado == null ? (
           <li>
-            <NavLink className="navLink" to="/crearusuario">
+            <NavLink className="btn btn-primary" to="/crearusuario">
               Crear Usuario
             </NavLink>
           </li>
@@ -44,7 +47,7 @@ function Navegacion(props) {
 
         {props.usuarioLogueado == null ? (
           <li>
-            <NavLink className="navLink" to="/iniciarsesion">
+            <NavLink className="btn btn-primary" to="/iniciarsesion">
               Iniciar Sesión
             </NavLink>
           </li>
@@ -54,11 +57,10 @@ function Navegacion(props) {
         {props.usuarioLogueado != null ? (
           <li>
             <button
-            id="botonRefrescar"
+              id="botonRefrescar"
               onClick={() => props.setRefrescaHooks()}
-              className="navLink refrescar"
+              className="btn btn-primary"
             >
-              {" "}
               Refrescar
             </button>
           </li>

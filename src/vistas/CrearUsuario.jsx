@@ -58,10 +58,11 @@ const CrearUsuario = (props) => {
   return (
     <div className="iniciarSesionContainer">
       <form className="formcrear" method="post" action="" onSubmit={crearCuentaYUsuario}>
-        <h2>Información de la cuenta</h2>
-        <div className="unidad">
+        <h2 className="display-5">Información de la cuenta</h2>
+        <div className="form-group">
           <label htmlFor="usuario">Usuario</label>
           <input
+          className="form-control"
             type="text"
             placeholder="Nombre de usuario"
             name="usuario"
@@ -73,9 +74,10 @@ const CrearUsuario = (props) => {
             required
           ></input>
         </div>
-        <div className="unidad">
+        <div className="form-group">
           <label htmlFor="contrasenya">Contraseña</label>
           <input 
+          className="form-control"
           type="password" 
           name="contrasenya" 
           id="contrasenya"
@@ -86,10 +88,11 @@ const CrearUsuario = (props) => {
           onChange={(e)=> setContrasenya(e.target.value)}
            required></input>
         </div>
-        <h2>Información personal</h2>
-        <div className="unidad">
+        <h2 className="display-5">Información personal</h2>
+        <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
           <input
+          className="form-control"
             type="text"
             placeholder="Nombre"
             name="nombre"
@@ -101,9 +104,10 @@ const CrearUsuario = (props) => {
             required
           ></input>
         </div>
-        <div className="unidad">
+        <div className="form-group">
           <label htmlFor="apellidos">Apellidos</label>
           <input
+          className="form-control"
             type="text"
             placeholder="Apellidos"
             name="apellidos"
@@ -115,9 +119,10 @@ const CrearUsuario = (props) => {
             required
           ></input>
         </div>
-        <div className="unidad">
+        <div className="form-group">
           <label htmlFor="correo">Correo electrónico</label>
           <input
+          className="form-control"
             type="text"
             placeholder="correo@ejemplo.com"
             name="correo"
@@ -129,7 +134,8 @@ const CrearUsuario = (props) => {
             required
           ></input>
         </div>
-        <h2>Tipo de Usuario</h2>
+        <h2 className="display-6">Tipo de Usuario</h2>
+        <div className="form-group">
         <label className="check" for="psicologo">
           Psicólogo
         </label>
@@ -154,8 +160,10 @@ const CrearUsuario = (props) => {
           checked={tipoUsuario === 2? true: false}
           onChange={buscaValorRadioButton}
         ></input>
-        <div className="unidad">
-          <button type="submit">Entrar</button>
+        </div>
+        
+        <div className="form-group">
+          <button type="submit" className="btn btn-primary">Crear</button>
         </div>
       </form>
     </div>

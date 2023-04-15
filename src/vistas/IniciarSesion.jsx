@@ -38,7 +38,7 @@ const IniciarSesion = (props) => {
   return (
     <div className="iniciarSesionContainer">
       <form method="post" action="" onSubmit={entrarSesion}>
-        <div className="unidad">
+        <div className="form-group">
           <label htmlFor="usuario">Entre el nombre de usuario</label>
           <input
             type="text"
@@ -46,11 +46,12 @@ const IniciarSesion = (props) => {
             id="usuario"
             name="usuario"
             value={usuario}
+            className="form-control"
             onChange={(e) => setUsuario(e.target.value)}
             required
           ></input>
         </div>
-        <div className="unidad">
+        <div className="form-group">
           <label htmlFor="contrasenya">Entre la contraseña</label>
           <input
             type="password"
@@ -58,12 +59,13 @@ const IniciarSesion = (props) => {
             name="contrasenya"
             placeholder="Introduzca su contraseña"
             value={contrasenya}
+            className="form-control"
             onChange={(e) => setContrasenya(e.target.value)}
             required
           ></input>
         </div>
         <div className="unidad">
-          <button type="submit">Entrar</button>
+          <button type="submit" className="btn btn-primary">Acceder</button>
         </div>
       </form>
     </div>
