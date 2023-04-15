@@ -162,7 +162,7 @@ const CrearUsuario = (props) => {
         ></input>
         </div>
         
-        <div className="form-group">
+        <div className="unidad">
           <button type="submit" className="btn btn-primary">Crear</button>
         </div>
       </form>

@@ -7,15 +7,11 @@ export const PaginaPrincipal = () => {
     <div>
       <h1 className="display-1 text-center text-primary">Psicología a la Carta</h1>
       <div>
-        <h2 className="display-3 text-center text-primary">Guía de usuario</h2>
-        <h3 className="agradecimiento">
+        <h2 className="display-4 text-center">Guía de usuario</h2>
+        <h3 className="agradecimiento text-center">
           Muchas gracias por visitar nuestra página web. Estamos encantados de
           la confianza que ha depositado en nosotros.
         </h3>
-        <p className="blockquote">
-          Nos gustaría mostrarle aquí una pequeña guía de cómo debe utilizar
-          esta aplicación
-        </p>
             <h4 className="fs-4 lh-4 text-center text-info">Creamos un usuario...</h4>
             <p className="text-start">
               Si no tiene una cuenta, en primer lugar debe hacer click en 
