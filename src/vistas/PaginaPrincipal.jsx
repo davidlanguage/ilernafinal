@@ -28,9 +28,7 @@ export const PaginaPrincipal = () => {
             <h4 className="fs-4 lh-4 text-center text-info">Creamos un mensaje...</h4>
             <p className="text-start">
               Una vez iniciada su sesión, se le instará a que <b>escriba un mensaje</b>. Este mensaje debe llevar un título indicativo 
-              de lo que le sucede, una descripción y se aconseja escribir una dirección de correo
-              electrónico, en caso de que desee ser contactado en otra diferente
-              a la utilizada a la hora de crear la cuenta.
+              de lo que le sucede y una descripción acorde a sus necesidades. No se preocupa, si se equivoca o lo desea, puede escribir el mensaje cuantas veces le haga falta.
             </p>
             <h4 className="fs-4 lh-4 text-center text-info">Esperamos a ser contactados por profesionales...</h4>
             <p className="text-start">
