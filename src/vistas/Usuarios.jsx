@@ -72,9 +72,6 @@ const Usuarios = (props) => {
           setContenido("");
           setTieneMensaje(true);
           props.setRefrescaHooks();
-          /*         alert(
-            "Mensaje creado con éxito. Refresque la página para ver el contenido"
-          ); */
         })
         .catch((error) => console.log("error", error));
     } else {
@@ -127,7 +124,7 @@ const Usuarios = (props) => {
                       };
 
                       fetch(
-                        `http://localhost:9090/activar${props.usuarioLogueado.id}`,
+                        `http://localhost:9090/activar/${props.usuarioLogueado.id}`,
                         opcionesPeticionActivar
                       )
                         .then((response) => {})
@@ -146,6 +143,60 @@ const Usuarios = (props) => {
             )
           )}
         </div>
+            <div className="container">
+              <h2 className="display-6 arenaClientes">Tus Clientes</h2>
+            </div>
+        <div>
+          {props.listaDeUsuarios.map((cliente) => 
+          cliente.usuario.idPsicologoAsignado === props.usuarioLogueado.usuario.id
+          ? 
+          (
+              <div className="card border-secondary">
+                <div className="card-body">
+                  <h2 className="card-title">Su cliente</h2>
+                  <p className="card-text">Nombre: {cliente.usuario.nombre}</p>
+                  <p className="card-text">Apellidos: {cliente.usuario.apellidos}</p>
+                  <p className="card-text">Apellidos: {cliente.usuario.correoElectronico}</p>
+                  <button
+                    className="btn btn-primary margenDerecha"
+                    onClick={() => {
+                      const misCabeceras = new Headers();
+                      misCabeceras.append("Content-Type", "application/json");
+                      
+                      const raw = JSON.stringify({
+                        "id": cliente.usuario.id,
+                        "nombre": cliente.usuario.nombre,
+                        "apellidos": cliente.usuario.apellidos,
+                        "activo": cliente.usuario.activo,
+                        "correoElectronico": cliente.usuario.correoElectronico,
+                        "tipoUsuario": cliente.usuario.nombre.tipoUsuario
+                      });
+                      
+                      const opcionesPeticion = {
+                        method: 'POST',
+                        headers: misCabeceras,
+                        body: raw,
+                        redirect: 'follow'
+                      };
+                      
+                      fetch(`http://localhost:9090/desactivar/${props.usuarioLogueado.usuario.id}`, opcionesPeticion)
+                      .then((response) => {})
+                      .then((result) => {
+                        props.setRefrescaHooks();
+                      })
+                      .catch((error) => console.log("error", error));
+                    }}
+                  >
+                    Designar
+                  </button>
+                </div>
+              </div>
+            ) : (
+              ""
+            )
+          )}
+        </div>
+
       </>
     );
   else {
@@ -235,7 +286,7 @@ const Usuarios = (props) => {
                 </div>
               </div>
           ):""
-       )};
+       )}
         
         {tieneMensaje ||
         props.usuarioLogueado.usuario.idPsicologoAsignado != null ? (
