@@ -90,7 +90,7 @@ const Usuarios = (props) => {
           {props.mensajes.map((mensaje) =>
             mensaje.usuario.tipoUsuario === 2 &&
             mensaje.usuario.activo === 1 ? (
-              <div className="card border-secondary">
+              <div className="card border-secondary separacionCartas">
                 <div className="card-body">
                   <h2 className="card-title">{mensaje.titulo}</h2>
                   <p className="card-text">{mensaje.contenido}</p>
@@ -144,19 +144,19 @@ const Usuarios = (props) => {
           )}
         </div>
             <div className="container">
-              <h2 className="display-6 arenaClientes">Tus Clientes</h2>
+              <h2 className="display-6 areaClientes">Tus Clientes</h2>
             </div>
         <div>
           {props.listaDeUsuarios.map((cliente) => 
           cliente.usuario.idPsicologoAsignado === props.usuarioLogueado.usuario.id
           ? 
           (
-              <div className="card border-secondary">
+              <div className="card border-secondary separacionCartas">
                 <div className="card-body">
                   <h2 className="card-title">Su cliente</h2>
                   <p className="card-text">Nombre: {cliente.usuario.nombre}</p>
                   <p className="card-text">Apellidos: {cliente.usuario.apellidos}</p>
-                  <p className="card-text">Apellidos: {cliente.usuario.correoElectronico}</p>
+                  <p className="card-text">Correo Electrónico: {cliente.usuario.correoElectronico}</p>
                   <button
                     className="btn btn-primary margenDerecha"
                     onClick={() => {
@@ -212,7 +212,7 @@ const Usuarios = (props) => {
           {props.mensajes.map((mensaje) =>
             mensaje.usuarioDestino.id === props.usuarioLogueado.usuario.id &&
             props.usuarioLogueado.usuario.id ? (
-              <div className="card-body border-secondary">
+              <div className="card-body border-secondary separacionCartas">
                 <h2 className="card-title">{mensaje.titulo}</h2>
                 <p className="card-text">{mensaje.contenido}</p>
                 <p>
@@ -273,7 +273,7 @@ const Usuarios = (props) => {
           psicologo.usuario.id === props.usuarioLogueado.usuario.idPsicologoAsignado
           ?
           (
-              <div className="card">
+              <div className="card separacionCartas">
                 <div className="card-body border-secondary">
                   <h2 className="card-title">
                     Información sobre su psicólogo asignado
@@ -292,7 +292,7 @@ const Usuarios = (props) => {
         props.usuarioLogueado.usuario.idPsicologoAsignado != null ? (
           ""
         ) : (
-          <div>
+          <div className="separacionCartas">
             <h3>Escriba un mensaje</h3>
             <p className="aparte">Por favor, añada un mensaje si lo desea.</p>
             <div className="form-group">

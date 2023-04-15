@@ -1,18 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Logo from "../imagenes/psicologialogo2.png";
 import "../estilos/NavegacionEstilo.css";
 
 function Navegacion(props) {
   return (
-    <div className="">
+    <div className="container">
       <ul className="flexNavegacion ">
-        <img
-          src={Logo}
-          height="100px"
-          alt="Logo de la compañía"
-          className="nav-item"
-        ></img>
         <li className="nav-item">
           <NavLink
             className="btn btn-primary"
