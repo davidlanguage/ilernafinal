@@ -90,7 +90,7 @@ const Usuarios = (props) => {
           {props.mensajes.map((mensaje) =>
             mensaje.usuario.tipoUsuario === 2 &&
             mensaje.usuario.activo === 1 ? (
-              <div className="card">
+              <div className="card border-secondary">
                 
                 <div className="card-body">
                 <h2 className="card-title">{mensaje.titulo}</h2>
@@ -155,7 +155,7 @@ const Usuarios = (props) => {
           {props.mensajes.map((mensaje) =>
             mensaje.usuarioDestino.id === props.usuarioLogueado.usuario.id &&
             props.usuarioLogueado.usuario.id ? (
-              <div className="card-body">
+              <div className="card-body border-secondary">
                 <h2 className="card-title">{mensaje.titulo}</h2>
                 <p className="card-text">{mensaje.contenido}</p>
                 <p>
