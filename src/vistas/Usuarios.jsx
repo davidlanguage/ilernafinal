@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "../estilos/UsuariosEstilo.css";
-
+//props.usuarioLogueado.usuario.idPsicologoAsignado != null ? 
 const Usuarios = (props) => {
   const escribirMensajeCliente =
     document.getElementsByClassName("contenedorMensaje");
@@ -12,6 +12,7 @@ const Usuarios = (props) => {
   const mensajes = props.mensajes;
 
   console.log(escribirMensajeCliente);
+
 
   //Con esto verificamos que el usuario tenga o no mensajes.
   //Si tiene mensajes, no podrá escribir un mensaje
@@ -85,59 +86,60 @@ const Usuarios = (props) => {
     return (
       <>
         <h3 className="display-5">¡Hola, psicólogo!</h3>
-        <p className="display-6">Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}</p>
+        <p className="display-6">
+          Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}
+        </p>
         <div>
           {props.mensajes.map((mensaje) =>
             mensaje.usuario.tipoUsuario === 2 &&
             mensaje.usuario.activo === 1 ? (
               <div className="card border-secondary">
-                
                 <div className="card-body">
-                <h2 className="card-title">{mensaje.titulo}</h2>
-                <p className="card-text">{mensaje.contenido}</p>
-                <p>
-                  Publicado por: {mensaje.usuario.nombre}{" "}
-                  {mensaje.usuario.apellidos}
-                </p>
-                <p className="card-text">Correo electrónico: {mensaje.usuario.correoElectronico}</p>
-                <button
-                className="btn btn-primary"
-                  onClick={() => {
-                    const cabecera = new Headers();
-                    cabecera.append("Content-Type", "application/json");
+                  <h2 className="card-title">{mensaje.titulo}</h2>
+                  <p className="card-text">{mensaje.contenido}</p>
+                  <p>
+                    Publicado por: {mensaje.usuario.nombre}{" "}
+                    {mensaje.usuario.apellidos}
+                  </p>
+                  <p className="card-text">
+                    Correo electrónico: {mensaje.usuario.correoElectronico}
+                  </p>
+                  <button
+                    className="btn btn-primary margenDerecha"
+                    onClick={() => {
+                      const cabecera = new Headers();
+                      cabecera.append("Content-Type", "application/json");
 
-                    const raw = JSON.stringify({
-                      id: mensaje.usuario.id,
-                      nombre: mensaje.usuario.nombre,
-                      apellidos: mensaje.usuario.apellidos,
-                      activo: mensaje.usuario.activo,
-                      correoElectronico: mensaje.usuario.correoElectronico,
-                      tipoUsuario: mensaje.usuario.tipoUsuario,
-                    });
-                    console.log(raw);
+                      const raw = JSON.stringify({
+                        id: mensaje.usuario.id,
+                        nombre: mensaje.usuario.nombre,
+                        apellidos: mensaje.usuario.apellidos,
+                        activo: mensaje.usuario.activo,
+                        correoElectronico: mensaje.usuario.correoElectronico,
+                        tipoUsuario: mensaje.usuario.tipoUsuario,
+                      });
 
-                    const opcionesPeticion = {
-                      method: "POST",
-                      headers: cabecera,
-                      body: raw,
-                      redirect: "follow",
-                    };
+                      const opcionesPeticionActivar = {
+                        method: "POST",
+                        headers: cabecera,
+                        body: raw,
+                        redirect: "follow",
+                      };
 
-                    fetch("http://localhost:9090/activar", opcionesPeticion)
-                      .then((response) => {
-                        console.log(response.text());
-                      })
-                      .then((result) => {
-                        console.log(result);
-                        props.setRefrescaHooks();
-                      })
-                      .catch((error) => console.log("error", error));
-                  }}
-                >
-                  Asignar
-                </button>
-                  </div>
-                
+                      fetch(
+                        `http://localhost:9090/activar${props.usuarioLogueado.id}`,
+                        opcionesPeticionActivar
+                      )
+                        .then((response) => {})
+                        .then((result) => {
+                          props.setRefrescaHooks();
+                        })
+                        .catch((error) => console.log("error", error));
+                    }}
+                  >
+                    Asignar
+                  </button>
+                </div>
               </div>
             ) : (
               ""
@@ -149,8 +151,12 @@ const Usuarios = (props) => {
   else {
     return (
       <>
-        <h3 className="display-5">Bienvenido a un lugar en donde encontrará la ayuda que necesita</h3>
-        <p className="display-6">Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}</p>
+        <h3 className="display-5">
+          Bienvenido a un lugar en donde encontrará la ayuda que necesita
+        </h3>
+        <p className="display-6">
+          Le deseamos un feliz día, {props.usuarioLogueado.usuario.nombre}
+        </p>
         <div className="card">
           {props.mensajes.map((mensaje) =>
             mensaje.usuarioDestino.id === props.usuarioLogueado.usuario.id &&
@@ -162,9 +168,11 @@ const Usuarios = (props) => {
                   Publicado por: {mensaje.usuario.nombre}{" "}
                   {mensaje.usuario.apellidos}
                 </p>
-                <p className="card-text">Correo electrónico: {mensaje.usuario.correoElectronico}</p>
+                <p className="card-text">
+                  Correo electrónico: {mensaje.usuario.correoElectronico}
+                </p>
                 <button
-                className="btn btn-primary"
+                  className="btn btn-primary"
                   onClick={() => {
                     const cabecera = new Headers();
                     cabecera.append("Content-Type", "application/json");
@@ -202,8 +210,35 @@ const Usuarios = (props) => {
             )
           )}
         </div>
-
-        {tieneMensaje ? (
+        
+        { props.usuarioLogueado.usuario.idPsicologoAsignado==null
+          ? (
+            <div class="alert alert-warning separacion" role="alert">
+              Por ahora no tiene a ningún psicólogo asignado. Por favor esté a la
+              espera.
+            </div>
+          )
+          :props.listaDeUsuarios.map((psicologo) => 
+          psicologo.usuario.id === props.usuarioLogueado.usuario.idPsicologoAsignado
+          ?
+          (
+              <div className="card">
+                <div className="card-body border-secondary">
+                  <h2 className="card-title">
+                    Información sobre su psicólogo asignado
+                  </h2>
+                  <p className="card-text">Nombre: {psicologo.usuario.nombre}</p>
+                  <p className="card-text">Apellidos: {psicologo.usuario.apellidos}</p>
+                  <p className="card-text">
+                    Correo electrónico: {psicologo.usuario.correoElectronico}
+                  </p>
+                </div>
+              </div>
+          ):""
+       )};
+        
+        {tieneMensaje ||
+        props.usuarioLogueado.usuario.idPsicologoAsignado != null ? (
           ""
         ) : (
           <div>
