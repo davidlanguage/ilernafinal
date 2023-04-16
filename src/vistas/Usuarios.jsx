@@ -264,7 +264,7 @@ const Usuarios = (props) => {
         
         { props.usuarioLogueado.usuario.idPsicologoAsignado==null
           ? (
-            <div class="alert alert-warning separacion" role="alert">
+            <div class="alert alert-warning separacion separacionCartas" role="alert">
               Por ahora no tiene a ningún psicólogo asignado. Por favor esté a la
               espera.
             </div>
