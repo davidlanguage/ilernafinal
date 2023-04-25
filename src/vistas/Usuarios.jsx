@@ -124,7 +124,7 @@ const Usuarios = (props) => {
                       };
 
                       fetch(
-                        `http://localhost:9090/activar/${props.usuarioLogueado.id}`,
+                        `http://localhost:9090/activar/${props.usuarioLogueado.usuario.id}`,
                         opcionesPeticionActivar
                       )
                         .then((response) => {})
