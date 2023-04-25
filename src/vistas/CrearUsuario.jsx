@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../estilos/IniciarOCrearSesionEstilo.css";
 
 const CrearUsuario = (props) => {
   const [usuario, setUsuario] = useState('')
@@ -57,12 +56,12 @@ const CrearUsuario = (props) => {
 
   return (
     <div className="iniciarSesionContainer">
-      <form className="formcrear" method="post" action="" onSubmit={crearCuentaYUsuario}>
-        <h2 className="display-5">Información de la cuenta</h2>
+      <form method="post" action="" onSubmit={crearCuentaYUsuario}>
+        <h2 className="display-6">Información de la cuenta</h2>
         <div className="form-group">
           <label htmlFor="usuario">Usuario</label>
           <input
-          className="form-control"
+          className="form-control input-xl"
             type="text"
             placeholder="Nombre de usuario"
             name="usuario"
@@ -88,7 +87,7 @@ const CrearUsuario = (props) => {
           onChange={(e)=> setContrasenya(e.target.value)}
            required></input>
         </div>
-        <h2 className="display-5">Información personal</h2>
+        <h2 className="display-6">Información personal</h2>
         <div className="form-group">
           <label htmlFor="nombre">Nombre</label>
           <input

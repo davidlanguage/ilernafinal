@@ -49,13 +49,12 @@ function Navegacion(props) {
         )}
         {props.usuarioLogueado != null ? (
           <li>
-            <button
-              id="botonRefrescar"
+            <NavLink
               onClick={() => props.setRefrescaHooks()}
               className="btn btn-primary"
             >
               Refrescar
-            </button>
+            </NavLink>
           </li>
         ) : (
           ""

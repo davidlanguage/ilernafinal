@@ -153,7 +153,7 @@ const Usuarios = (props) => {
           (
               <div className="card border-secondary separacionCartas">
                 <div className="card-body">
-                  <h2 className="card-title">Su cliente</h2>
+                  <h2 className="card-header">Su cliente</h2>
                   <p className="card-text">Nombre: {cliente.usuario.nombre}</p>
                   <p className="card-text">Apellidos: {cliente.usuario.apellidos}</p>
                   <p className="card-text">Correo Electrónico: {cliente.usuario.correoElectronico}</p>
