@@ -134,7 +134,7 @@ const Usuarios = (props) => {
                         .catch((error) => console.log("error", error));
                     }}
                   >
-                    Asignar
+                    Asigne
                   </button>
                 </div>
               </div>
@@ -187,7 +187,7 @@ const Usuarios = (props) => {
                       .catch((error) => console.log("error", error));
                     }}
                   >
-                    Desasignar
+                    Desasigne
                   </button>
                 </div>
               </div>
